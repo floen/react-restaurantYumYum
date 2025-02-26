@@ -1,20 +1,45 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+main {
+
+  background: repeating-linear-gradient(45deg, #3f87a6, #c7dbb7 15%, #f69d3c 20%);
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
+.wrapApp {
+  background-color: #778f88;
+  place-items: center;
+}
+
+.winter-solstice-icon {
+  height: 4em;
+  padding-right: 10px;
   will-change: filter;
   transition: filter 300ms;
+  grid-column: 1;
+  margin: auto;
 }
-.logo:hover {
+
+.winter-solstice-container {
+  width: 80%;
+  margin: auto;
+  background-color: #778f88;
+  padding: 5px 20px;
+  border-radius: 5px;
+}
+
+.logo-name {
+  display: inline-block;
+  grid-column: 2;
+}
+
+.cart-icon {
+  grid-column: 3;
+  margin: auto;
+}
+
+.winter-solstice-icon:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
-.logo.react:hover {
+
+.winter-solstice-icon.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
@@ -22,6 +47,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -31,12 +57,4 @@
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
 }

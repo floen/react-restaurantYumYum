@@ -10,19 +10,41 @@ export const apiSlice = createApi({
             query: () => ({
                 url: "/menu",
                 method: 'GET',
-                header: {
+                headers: {
                     "Content-Type": "application/json",
                     "x-zocom": "yum-KwOi5vm2TYNmi8Dd"
                 }
             })
         }),
         getMenuById: builder.query({
-            query: () => `menu/${id}`,
-            header: { "x-zocom": "yum-KwOi5vm2TYNmi8Dd" }
+            query: (id) => ({
+                url: `menu/${id}`,
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-zocom": "yum-KwOi5vm2TYNmi8Dd"
+                }
+            })
+        }),
+        getOrderByOrderId: builder.query({
+            query: (id) => ({
+                url: `winter_solstice/orders/${id}`,
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-zocom": "yum-KwOi5vm2TYNmi8Dd"
+                }
+            })
         }),
         getReceiptsByOrderId: builder.query({
-            query: () => `receipts/${id}`,
-            header: { "x-zocom": "yum-KwOi5vm2TYNmi8Dd" }
+            query: (id) => ({
+                url: `receipts/${id}`,
+                method: 'GET',
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-zocom": "yum-KwOi5vm2TYNmi8Dd"
+                }
+            })
         }),
         postOrder: builder.mutation({
             query: (orderData) => ({
@@ -38,7 +60,7 @@ export const apiSlice = createApi({
     })
 });
 
-export const { useGetMenuQuery, useGetMenuByIdQuery, useGetReceiptsByOrderIdQuery, usePostOrderMutation } = apiSlice;
+export const { useGetMenuQuery, useGetMenuByIdQuery, useGetOrderByOrderIdQuery, useGetReceiptsByOrderIdQuery, usePostOrderMutation } = apiSlice;
 
 //yum-KwOi5vm2TYNmi8Dd
 //winter_solstice

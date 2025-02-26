@@ -1,0 +1,23 @@
+.wrap-eta {
+    height: 80%;
+}
+
+.eta-section {
+    display: grid;
+}
+
+.wrap-text {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    align-self: flex-end;
+}
+
+button {
+    margin: 10px;
+}

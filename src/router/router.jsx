@@ -3,24 +3,24 @@ import { createBrowserRouter } from "react-router-dom";
 import Menu from "../pages/Menu";
 import Cart from "../pages/cart";
 import Receipt from "../pages/receipt";
-import DirectionPage from "../pages/DirectionPage";
+import Eta from "../pages/Eta";
 
 const router = createBrowserRouter([
     {
-        path: '/',
+        path: "/",
         element: <Menu></Menu>
     },
     {
-        path: '/cart',
+        path: "/cart",
         element: <Cart></Cart>
     },
     {
-        path: '/receipt',
+        path: "/receipt",
         element: <Receipt></Receipt>
     },
     {
-        path: '/directionpage',
-        element: <DirectionPage></DirectionPage>
+        path: "/eta",
+        element: <Eta></Eta>
     },
 ]);
 

@@ -1,12 +1,21 @@
+import './product.css'
+import { useDispatch } from "react-redux";
+import { addToCart } from '../../reducers/cartReducer';
 function Product(props) {
-    return
-    (
-        <section>
+
+    const dispatch = useDispatch();
+    function handleClick() {
+        dispatch(addToCart({ id: props.id, amount: 1 }));
+    }
+    return (
+        <div className="productWrap">
             <h3>{props.name}</h3>
-            <span classname:dot></span>
+            <span className="dot"></span>
             <h3>{props.price}</h3>
-            <p>{props.ingredients}</p>
-        </section>
+            <p>{props.description}</p>
+            <button onClick={handleClick}>Add to cart</button>
+
+        </div>
     );
 }
 export default Product;

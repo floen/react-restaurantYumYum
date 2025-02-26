@@ -1,0 +1,11 @@
+.wrapCart h2 {
+    display: inline-block;
+}
+
+.wrapCart h3 {
+    display: inline-block;
+}
+
+.takeMyMoney {
+    float: right;
+}

@@ -12,6 +12,8 @@ function Cart() {
     const cart = useSelector((state) => {
         return state.cart;
     });
+
+
     var totalPrice = 0;
     var errorMessageForOrder = "";
     const cartComponents = cart.cartItems.map((item) => {
@@ -26,12 +28,13 @@ function Cart() {
                             <p>Something is wrong</p>
                         ) :
                         (
-                            <div key={data?.id} >
-                                <h3>{data?.item.name}</h3>
+                            <div className='cart' key={data?.id} >
+                                <h3 >{data?.item.name}</h3>
                                 <span className="dot"></span>
-                                <h3>{item.amount + " Styck"} </h3>
                                 <h3>{data?.item.price + " SEK"}</h3>
                                 <button onClick={RemoveFromCart(item.id)}>Remove</button>
+                                <p className='quantity'>{item.amount + " Styck"} </p>
+
                             </div >
                         )
                     )
@@ -80,7 +83,7 @@ function Cart() {
                 <div>{errorMessageForOrder}</div>
                 <footer>
                     <h2>TOTALT </h2><span> </span>
-                    <h2>{" " + totalPrice == NaN ? "" : totalPrice + " SEK"}</h2>
+                    <h2>{" " + totalPrice === NaN ? "" : totalPrice + " SEK"}</h2>
                     <button className="takeMyMoney" onClick={Order}>TAKE MY MONEY!</button>
                 </footer>
             </div>

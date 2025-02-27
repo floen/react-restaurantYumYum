@@ -1,6 +1,8 @@
 import './Header.css'
 import CartIcon from '../CartIcon/CartIcon';
+import { useNavigate } from "react-router-dom"
 function Header(props) {
+    const navigate = useNavigate();
 
     function NavigateToMenu() {
         navigate("/");

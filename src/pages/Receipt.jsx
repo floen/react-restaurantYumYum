@@ -15,21 +15,22 @@ function Receipt() {
         });
 
     console.log(cart.cartOrderId);
-    const { data, isError, isLoading } = useGetReceiptsByOrderIdQuery("0qc8sn8a");
+    const { data, isError, isLoading } = useGetReceiptsByOrderIdQuery(cart.cartOrderId);
     console.log(data);
     console.log(data?.receipt.items);
     const receiptComponents = data?.receipt?.items.map((item) => {
         return (
-            <div key={item.id}>
+            <div className='receipt' key={item.id}>
                 <div>
                     <h3>{item.name}</h3>
                     <span className="dot"></span>
                     <h3>{item.price + " SEK"}</h3>
-                </div>
-                <div>
+                    <div className='placeholder'></div>
                     <p>{item.quantity}</p>
                     <p>{item.type}</p>
                 </div>
+
+
 
             </div>
         )
@@ -43,16 +44,18 @@ function Receipt() {
     return (
         <div className="wrap-receipt">
             <Header hideCart="true"></Header>
-            <div className="winter-solstice-container">
-                <img height={50} src="./Winter_Solstice.png"></img>
-                <h2>RECEIPT</h2>
+            <div className="winter-solstice-container receipt-section">
+                <div>
+                    <img className='icon' height={50} src="./Winter_Solstice.png"></img>
+                    <h2 className='heading'>RECEIPT</h2>
+                </div>
                 {isLoading
                     ? (
-                        <p>Loading receipt</p>
+                        <p className='message'>Loading receipt</p>
                     )
                     : (isError ?
                         (
-                            <p>Something got wrong</p>
+                            <p className='message'>Something got wrong</p>
                         )
                         : (
                             <div>{receiptComponents}</div>

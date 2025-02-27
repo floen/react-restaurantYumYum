@@ -6,6 +6,14 @@
     display: inline-block;
 }
 
+.cart {}
+
 .takeMyMoney {
     float: right;
+}
+
+.quantity {
+    margin: 0px;
+    width: 100%;
+    font-size: 18px;
 }

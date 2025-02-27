@@ -13,7 +13,7 @@ main,
   background-color: #778f88;
   padding: 5px 20px 100px 5px;
   border-radius: 5px;
-  height: 100%;
+  /* height: 100%; */
 }
 
 :root {

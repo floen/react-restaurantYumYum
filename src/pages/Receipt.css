@@ -4,8 +4,61 @@
     background-color: #778f88;
     padding: 5px 20px;
     border-radius: 5px;
+
 }
 
 .wrap-receipt {
     height: 80%;
+}
+
+.receipt-section {
+    background-color: aliceblue;
+    color: rgb(83, 79, 79);
+    text-align: center;
+}
+
+.receipt-section>button {
+    color: aliceblue;
+    background-color: rgb(109, 101, 101);
+    float: none;
+}
+
+.receipt {
+    text-align: left;
+}
+
+.receipt>div>h3 {
+    display: inline-block;
+    margin-bottom: 0px;
+    margin-top: 30px;
+}
+
+.receipt>div>p {
+    margin: 0px;
+}
+
+.heading {
+    display: inline-block;
+    vertical-align: bottom;
+    margin-left: 10px;
+    ;
+}
+
+.icon {
+    margin: auto;
+    vertical-align: super;
+}
+
+.wrap-quantity>span {
+    width: 75%;
+    display: inline-block;
+}
+
+.placeholder {
+    width: 80%;
+}
+
+.message {
+    display: block;
+    font-size: 30px;
 }

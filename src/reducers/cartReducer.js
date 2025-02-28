@@ -22,14 +22,16 @@ const cartSlice = createSlice({
         },
         removeFromCart(state, action) {
             var itemIncluded = state.cartItems.find(item => item.id === action.payload.id);
-            console.log(itemIncluded);
-            if (itemIncluded.quantity > 1) {
-                itemIncluded.quantity -= 1;
-            }
-            else {
-                var index = state.cartItems.indexOf(action.payload.id);
-                if (index > -1) {
-                    state.cartItems.splice(index, 1);
+            if (itemIncluded != undefined) {
+                if (itemIncluded.quantity > 1) {
+                    itemIncluded.quantity -= 1;
+                }
+                else {
+                    var index = state.cartItems.indexOf(action.payload.id);
+                    console.log("removeFromCart " + action.payload.id);
+
+                    console.log("removeFromCart2 " + index);
+                    state.cartItems.splice(state.cartItems.findIndex(product => product.id === action.payload.id), 1);
                 }
             }
         },
@@ -40,7 +42,7 @@ const cartSlice = createSlice({
             state.cartOrderId = action.payload;
         }
         // Här kan vi lägga till fler reducers för att uppdatera vårt state ex. decrement
-    },
+    }
 });
 
 export const { addToCart, removeFromCart, setCartOrderId, emptyCart } = cartSlice.actions;

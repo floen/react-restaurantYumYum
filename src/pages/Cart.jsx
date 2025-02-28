@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom"
 import { removeFromCart, setCartOrderId } from '../reducers/cartReducer'
 import Header from '../components/Header/Header'
+import { useEffect, useState } from 'react';
 
 function Cart() {
     const navigate = useNavigate();
@@ -12,11 +13,22 @@ function Cart() {
     const cart = useSelector((state) => {
         return state.cart;
     });
+    const [cartList, setCartList] = useState(cart.cartItems);
 
+    function RemoveFromCart(id) {
+        console.log("Cart() remove");
+        dispatch(removeFromCart({ id: id, quantity: 1 }));
+        setCartList(cart.cartItems);
+        for (var i = 0; i < cartList; i++) {
+            console.log(cartList[i].id);
+        }
+    }
 
     var totalPrice = 0;
     var errorMessageForOrder = "";
-    const cartComponents = cart.cartItems.map((item) => {
+
+    const cartComponents = cartList.map((item) => {
+        console.log("cartComponents köks varje gång" + item.id);
         if (cart.cartItems.length > 0 && item.id != "") {
             const { data, isError, isLoading } = useGetMenuByIdQuery(item.id);
             totalPrice += (parseInt(data?.item.price) * item.quantity);
@@ -32,9 +44,8 @@ function Cart() {
                                 <h3 >{data?.item.name}</h3>
                                 <span className="dot"></span>
                                 <h3>{data?.item.price + " SEK"}</h3>
-                                <button onClick={RemoveFromCart(item.id)}>Remove</button>
+                                <button onClick={() => { RemoveFromCart(item.id); }}>Remove</button>
                                 <p className='quantity'>{item.quantity + " Styck"} </p>
-
                             </div >
                         )
                     )
@@ -47,9 +58,10 @@ function Cart() {
         }
     });
 
-    function RemoveFromCart(id) {
-        dispatch(removeFromCart({ id: id, quantity: 1 }));
-    }
+
+
+
+
 
     async function Order() {
 

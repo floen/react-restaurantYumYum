@@ -9,14 +9,14 @@ function CartIcon() {
         return state.cart;
     });
 
-    const cartAmount = CartAmount();
+    const cartQuantity = CartQuantity();
 
-    function CartAmount() {
-        let amount = 0;
+    function CartQuantity() {
+        let quantity = 0;
         cart.cartItems.forEach(element => {
-            amount += element.amount;
+            quantity += element.quantity;
         });
-        return amount;
+        return quantity;
     };
 
 
@@ -26,7 +26,7 @@ function CartIcon() {
     return (
         <div className="wrap-cart-icon">
             <div className="wrap-cart-counter">
-                <p className="cart-counter">{cartAmount == 0 ? "" : cartAmount} </p>
+                <p className="cart-counter">{cartQuantity == 0 ? "" : cartQuantity} </p>
             </div>
             <img heigh={70} width={70} className="cart-icon" src="/cart.png" onClick={NavigateToCart} />
         </div>

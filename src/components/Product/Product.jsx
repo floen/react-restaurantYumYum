@@ -5,7 +5,7 @@ function Product(props) {
 
     const dispatch = useDispatch();
     function handleClick() {
-        dispatch(addToCart({ id: props.id, amount: 1 }));
+        dispatch(addToCart({ id: props.id, quantity: 1 }));
     }
     return (
         <div className="productWrap">

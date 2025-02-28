@@ -19,7 +19,7 @@ function Cart() {
     const cartComponents = cart.cartItems.map((item) => {
         if (cart.cartItems.length > 0 && item.id != "") {
             const { data, isError, isLoading } = useGetMenuByIdQuery(item.id);
-            totalPrice += (parseInt(data?.item.price) * item.amount);
+            totalPrice += (parseInt(data?.item.price) * item.quantity);
             return (
                 isLoading ?
                     (<p>Loading</p>)
@@ -33,7 +33,7 @@ function Cart() {
                                 <span className="dot"></span>
                                 <h3>{data?.item.price + " SEK"}</h3>
                                 <button onClick={RemoveFromCart(item.id)}>Remove</button>
-                                <p className='quantity'>{item.amount + " Styck"} </p>
+                                <p className='quantity'>{item.quantity + " Styck"} </p>
 
                             </div >
                         )
@@ -48,7 +48,7 @@ function Cart() {
     });
 
     function RemoveFromCart(id) {
-        dispatch(removeFromCart({ id: id, amount: 1 }));
+        dispatch(removeFromCart({ id: id, quantity: 1 }));
     }
 
     async function Order() {
@@ -56,7 +56,7 @@ function Cart() {
         var orderArray = [];
         cart.cartItems.map((item) => {
             var i = 0;
-            while (item.amount > i) {
+            while (item.quantity > i) {
                 orderArray.push(item.id);
                 i++;
             }
@@ -82,8 +82,9 @@ function Cart() {
                 </div>
                 <div>{errorMessageForOrder}</div>
                 <footer>
-                    <h2>TOTALT </h2><span> </span>
-                    <h2>{" " + totalPrice === NaN ? "" : totalPrice + " SEK"}</h2>
+                    <div><h2>TOTALT</h2>
+                        <h2>{" " + totalPrice === NaN ? "" : totalPrice + " SEK"}</h2>
+                    </div>
                     <button className="takeMyMoney" onClick={Order}>TAKE MY MONEY!</button>
                 </footer>
             </div>

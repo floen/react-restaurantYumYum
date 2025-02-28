@@ -1,5 +1,15 @@
 .wrapCart h2 {
     display: inline-block;
+
+}
+
+footer>h2 {
+    margin-right: 10px;
+    display: block;
+}
+
+footer>button {
+    display: block;
 }
 
 .wrapCart h3 {

@@ -2,7 +2,7 @@ import './Cart.css'
 import { useGetMenuByIdQuery, usePostOrderMutation } from "../api/apiSlice";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from "react-router-dom"
-import { removeFromCart, setCartOrderId } from '../reducers/cartReducer'
+import { removeFromCart, setCartOrderId, addToCart } from '../reducers/cartReducer'
 import Header from '../components/Header/Header'
 import { useEffect, useState } from 'react';
 
@@ -18,11 +18,20 @@ function Cart() {
     function RemoveFromCart(id) {
         console.log("Cart() remove");
         dispatch(removeFromCart({ id: id, quantity: 1 }));
+
+    }
+    function AddToCart(id) {
+        console.log("Cart() remove");
+        dispatch(addToCart({ id: id, quantity: 1 }));
+
+    }
+
+    useEffect(() => {
         setCartList(cart.cartItems);
         for (var i = 0; i < cartList; i++) {
             console.log(cartList[i].id);
         }
-    }
+    }, [cart]);
 
     var totalPrice = 0;
     var errorMessageForOrder = "";
@@ -44,6 +53,7 @@ function Cart() {
                                 <h3 >{data?.item.name}</h3>
                                 <span className="dot"></span>
                                 <h3>{data?.item.price + " SEK"}</h3>
+                                <button onClick={() => { AddToCart(item.id); }}>Add</button>
                                 <button onClick={() => { RemoveFromCart(item.id); }}>Remove</button>
                                 <p className='quantity'>{item.quantity + " Styck"} </p>
                             </div >

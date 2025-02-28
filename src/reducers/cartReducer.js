@@ -23,15 +23,8 @@ const cartSlice = createSlice({
         removeFromCart(state, action) {
             var itemIncluded = state.cartItems.find(item => item.id === action.payload.id);
             if (itemIncluded != undefined) {
-                if (itemIncluded.quantity > 1) {
+                if (itemIncluded.quantity > 0) {
                     itemIncluded.quantity -= 1;
-                }
-                else {
-                    var index = state.cartItems.indexOf(action.payload.id);
-                    console.log("removeFromCart " + action.payload.id);
-
-                    console.log("removeFromCart2 " + index);
-                    state.cartItems.splice(state.cartItems.findIndex(product => product.id === action.payload.id), 1);
                 }
             }
         },

@@ -1,0 +1,30 @@
+    .wrap-cart-icon {
+        text-align: center;
+        margin: auto;
+    }
+
+    .cart-icon:hover {
+        border: 1px solid rgb(114, 110, 110);
+        border-radius: 50%;
+        background-color: aliceblue;
+    }
+
+    .wrap-cart-counter {
+        position: relative;
+        display: inline-block;
+
+
+    }
+
+    .cart-counter {
+        color: #000;
+        border: 1px solid #000;
+        border-radius: 50%;
+        background-color: aliceblue;
+        padding: 0px;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: -60px;
+        right: -70px;
+    }

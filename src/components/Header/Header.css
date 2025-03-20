@@ -1,0 +1,10 @@
+.header {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+}
+
+.wrap-winter-solstice-icon {
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+}
